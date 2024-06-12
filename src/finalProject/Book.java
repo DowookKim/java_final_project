@@ -1,6 +1,5 @@
 package finalProject;
-
-public class Book {
+public class Book extends Thing implements  BookInterface  {
     private String name;
     private String author;
     private int num;
@@ -30,6 +29,22 @@ public class Book {
     public void numMinus() {
         this.num--;
     }
+
+    public void set_name(String name)
+    {
+        this.name = name;
+    }
+
+    public void set_author(String author)
+    {
+        this.author = author;
+    }
+
+    public void set_num(int num)
+    {
+        this.num = num;
+    }
+
 
     @Override
     public String toString() {

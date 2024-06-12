@@ -1,5 +1,4 @@
 package finalProject;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,10 +42,10 @@ public class BookCRUD implements BookCRUDInterface {
     }
 
     public void listBook() {
-        System.out.println("Book Name                          	   Author               Count");
+        System.out.println("Book Name                          	   Author               Count              ThingID");
         for (int i = 0; i < list.size(); i++) {
             Book book = list.get(i);
-            System.out.printf("%-40.40s %-20.20s %5d\n", book.get_name(), book.get_author(), book.get_num());
+            System.out.printf("%-40.40s %-20.20s %5d %20d\n", book.get_name(), book.get_author(), book.get_num(),book.getThingId());
         }
     }
 
@@ -79,6 +78,7 @@ public class BookCRUD implements BookCRUDInterface {
     }
 
     public Book find(String name) {
+
         for (Book book : list) {
             if (book.get_name().equals(name)) {
                 return book;
@@ -86,6 +86,17 @@ public class BookCRUD implements BookCRUDInterface {
         }
         return null;
     }
+
+    public Book find(int id) {
+
+        for (Book book : list) {
+            if (book.getThingId() == id) {
+                return book;
+            }
+        }
+        return null;
+    }
+
 
     public int findIndex(Book p) {
         for (int i = 0; i < list.size(); i++) {

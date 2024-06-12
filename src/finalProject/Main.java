@@ -1,5 +1,4 @@
 package finalProject;
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
@@ -27,8 +26,8 @@ public class Main {
             input = in.nextLine();
             list = input.split("-");
             if (list.length == 3) {
-                bookName = list[0];
-                authorName = list[1];
+            	authorName = list[0];
+                bookName = list[1];
                 num = Integer.parseInt(list[2]);
 
                 manager.addBook(bookName, authorName, num);
@@ -51,10 +50,11 @@ public class Main {
             System.out.println("0. Exit");
             System.out.println("");
             System.out.print("Choose Menu : ");
-            
+
             if (s.hasNextInt()) {
                 menu = s.nextInt();
                 s.nextLine();
+                int n = 0;
                 switch (menu) {
                     case 1:
                         manager.addBook();
@@ -72,7 +72,22 @@ public class Main {
                         manager.loanBook();
                         break;
                     case 6:
-                        manager.findBook();
+                        System.out.print("1. Search for book name 2. Search for thingID > ");
+                        Scanner type = new Scanner(System.in);
+                        n = type.nextInt();
+                        if(n == 1)
+                        {
+                            manager.findBook();
+                        }
+                        else if(n == 2)
+                        {
+                            System.out.print("What is the thingID ? > ");
+                            int id = 0;
+                            id = type.nextInt();
+                            Book b = manager.find(id);
+                            System.out.println(b.toString());
+                        }
+
                         break;
                     case 0:
                         System.out.println("Bye!");
@@ -87,7 +102,7 @@ public class Main {
                 s.next();
             }
         }
-        
+
         try {
             out = new PrintWriter(filename);
         } catch (FileNotFoundException e) {
